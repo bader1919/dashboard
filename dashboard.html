@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Control Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1><i class="fas fa-desktop"></i> System Control Dashboard</h1>
+            <div class="header-status">
+                <span class="connection-status" id="connectionStatus">
+                    <i class="fas fa-circle"></i> Connected
+                </span>
+                <span class="last-update" id="lastUpdate">Last Update: --:--:--</span>
+            </div>
+        </header>
+
+        <div class="dashboard-grid">
+            <!-- Server Status Panel -->
+            <div class="panel server-panel">
+                <div class="panel-header">
+                    <h2><i class="fas fa-server"></i> Server Status</h2>
+                    <button class="refresh-btn" onclick="refreshServers()">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+                <div class="panel-content">
+                    <div class="server-grid" id="serverGrid">
+                        <!-- Servers will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Application Status Panel -->
+            <div class="panel application-panel">
+                <div class="panel-header">
+                    <h2><i class="fas fa-rocket"></i> Applications</h2>
+                    <button class="refresh-btn" onclick="refreshApplications()">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+                <div class="panel-content">
+                    <div class="application-list" id="applicationList">
+                        <!-- Applications will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Network Status Panel -->
+            <div class="panel network-panel">
+                <div class="panel-header">
+                    <h2><i class="fas fa-network-wired"></i> Network Status</h2>
+                    <button class="refresh-btn" onclick="refreshNetwork()">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+                <div class="panel-content">
+                    <div class="network-stats" id="networkStats">
+                        <!-- Network stats will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Overview Panel -->
+            <div class="panel overview-panel">
+                <div class="panel-header">
+                    <h2><i class="fas fa-chart-line"></i> System Overview</h2>
+                </div>
+                <div class="panel-content">
+                    <div class="overview-stats" id="overviewStats">
+                        <div class="stat-item">
+                            <div class="stat-value" id="totalServers">0</div>
+                            <div class="stat-label">Servers</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="runningApps">0</div>
+                            <div class="stat-label">Running Apps</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="networkLatency">0ms</div>
+                            <div class="stat-label">Avg Latency</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="uptime">0%</div>
+                            <div class="stat-label">Uptime</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alerts Panel -->
+            <div class="panel alerts-panel">
+                <div class="panel-header">
+                    <h2><i class="fas fa-exclamation-triangle"></i> Alerts</h2>
+                    <button class="clear-alerts-btn" onclick="clearAlerts()">
+                        <i class="fas fa-trash"></i> Clear
+                    </button>
+                </div>
+                <div class="panel-content">
+                    <div class="alerts-list" id="alertsList">
+                        <!-- Alerts will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logs Panel -->
+            <div class="panel logs-panel">
+                <div class="panel-header">
+                    <h2><i class="fas fa-file-alt"></i> System Logs</h2>
+                    <button class="clear-logs-btn" onclick="clearLogs()">
+                        <i class="fas fa-trash"></i> Clear
+                    </button>
+                </div>
+                <div class="panel-content">
+                    <div class="logs-container" id="logsContainer">
+                        <!-- Logs will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
